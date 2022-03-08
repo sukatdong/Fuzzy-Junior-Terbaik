@@ -1,0 +1,67 @@
+[System]
+Name='Cek Anggota Organisasi'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=3
+NumRules=5
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Jumlah_Kehadiran'
+Range=[0 10]
+NumMFs=3
+MF1='<5':'gaussmf',[1.77 -8.327e-17]
+MF2='5-7':'gaussmf',[1.77 5]
+MF3='7-10':'gaussmf',[1.771 10]
+
+[Input2]
+Name='Jumlah_Keaktifan'
+Range=[0 10]
+NumMFs=3
+MF1='<5':'gaussmf',[1.77 -8.327e-17]
+MF2='5-7':'gaussmf',[1.77 5]
+MF3='7-10':'gaussmf',[1.771 10]
+
+[Input3]
+Name='Jumlah_Keterlambatan'
+Range=[0 10]
+NumMFs=3
+MF1='<5':'gaussmf',[1.77 -8.327e-17]
+MF2='5-7':'gaussmf',[1.77 5]
+MF3='7-10':'gaussmf',[1.771 10]
+
+[Output1]
+Name='Naik_Pangkat'
+Range=[0 10]
+NumMFs=3
+MF1='Tidak_Naik_Pangkat':'trimf',[-4.167 0 4.167]
+MF2='Dipertimbangkan':'trimf',[0.8333 5 9.167]
+MF3='Naik_Pangkat':'trimf',[5.833 10 14.17]
+
+[Output2]
+Name='Junior_Terbaik'
+Range=[0 10]
+NumMFs=3
+MF1='Tidak_Layak':'trimf',[-4.167 0 4.167]
+MF2='Dipertimbangkan':'trimf',[0.8333 5 9.167]
+MF3='Junior_Terbaik':'trimf',[5.833 10 14.17]
+
+[Output3]
+Name='Dapat_Penghargaan'
+Range=[0 10]
+NumMFs=3
+MF1='Tidak_Layak':'trimf',[-4.167 0 4.167]
+MF2='Dipertimbangkan':'trimf',[0.8333 5 9.167]
+MF3='Dapat_Dipertimbangkan':'trimf',[5.833 10 14.17]
+
+[Rules]
+1 1 1, 1 1 1 (1) : 1
+2 1 1, 2 1 1 (1) : 1
+2 2 1, 2 2 1 (1) : 1
+3 2 1, 3 3 2 (1) : 1
+3 3 1, 3 3 3 (1) : 1
